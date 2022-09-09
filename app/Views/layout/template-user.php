@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Hijab Store | <?= $title; ?></title>
+    <title>Riffa Collection | <?= $title; ?></title>
 
     <!-- Custom fonts for this template-->
     <link href="<?= base_url(); ?>/style/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -93,6 +93,23 @@
 
     <!-- Custom scripts for all pages-->
     <script src="<?= base_url(); ?>/style/js/sb-admin-2.min.js"></script>
+
+    <script>
+        function previewImg() {
+            const pict = document.querySelector('#pic_cat');
+            const pictLabel = document.querySelector('.custom-file-label');
+            const imgPreview = document.querySelector('.img-preview');
+
+            pictLabel.textContent = pic_cat.files[0].name;
+
+            const filePic = new FileReader();
+            filePic.readAsDataURL(pic_cat.files[0]);
+
+            filePic.onload = function(e) {
+                imgPreview.src = e.target.result;
+            }
+        }
+    </script>
 
 </body>
 

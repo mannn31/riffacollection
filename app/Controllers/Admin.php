@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+
 class Admin extends BaseController
 {
     protected $db, $builder;
@@ -22,12 +23,6 @@ class Admin extends BaseController
     {
         $data['title'] = 'Manage Product';
         return view('pages/admin/product', $data);
-    }
-
-    public function manageCat()
-    {
-        $data['title'] = 'Manage Categories';
-        return view('pages/admin/categories', $data);
     }
 
     public function manageUsers()

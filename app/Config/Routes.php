@@ -43,7 +43,9 @@ $routes->get('/user', 'User::index');
 $routes->get('/admin', 'Admin::index', ['filter' => 'role:admin']);
 $routes->get('/admin/index', 'Admin::index', ['filter' => 'role:admin']);
 $routes->get('/admin/product', 'Admin::managePro', ['filter' => 'role:admin']);
-$routes->get('/admin/categories', 'Admin::manageCat', ['filter' => 'role:admin']);
+$routes->get('/admin/categories', 'Categories::index', ['filter' => 'role:admin']);
+$routes->get('/admin/categories/add', 'Categories::create', ['filter' => 'role:admin']);
+$routes->post('/admin/categories/save', 'Categories::save', ['filter' => 'role:admin']);
 $routes->get('/admin/manage-users', 'Admin::manageUsers', ['filter' => 'role:admin']);
 $routes->get('/admin/(:num)', 'Admin::detail/$1', ['filter' => 'role:admin']);
 
