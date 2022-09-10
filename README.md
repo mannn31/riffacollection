@@ -1,20 +1,31 @@
-# CodeIgniter 4 Application Starter
+# APLIKASI ONLINE SHOP SEDERHANA
 
-## What is CodeIgniter?
+## Preview Websites
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](http://codeigniter.com).
+![Login](public/imgs/login.png "Login")
+### Admin
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+![Home Admin](public/imgs/home-admin.png "Home Admin")
 
-More information about the plans for version 4 can be found in [the announcement](http://forum.codeigniter.com/thread-62615.html) on the forums.
+![Categories](public/imgs/manage-categories.png "Categories")
 
-The user guide corresponding to this version of the framework can be found
-[here](https://codeigniter4.github.io/userguide/).
+![Add Categories](public/imgs/add-categories.png "Add Categories")
 
-## Installation & updates
+![Edit Categories](public/imgs/edit-categories.png "Edit Categories")
+
+![Profile Admin](public/imgs/profile-admin.png "Profile Admin")
+
+![Edit Profiles Admin](public/imgs/edit-profiles-admin.png "Edit Profiles Admin")
+
+### User
+
+![Home User](public/imgs/home-user.png "Home User")
+
+![Profile User](public/imgs/profile-user.png "Profile User")
+
+![Edit Profiles User](public/imgs/edit-profiles-user.png "Edit Profiles User")
+
+<!-- ## Installation & updates
 
 `composer create-project codeigniter4/appstarter` then `composer update` whenever
 there is a new release of the framework.
@@ -60,4 +71,4 @@ Additionally, make sure that the following extensions are enabled in your PHP:
 - json (enabled by default - don't turn it off)
 - [mbstring](http://php.net/manual/en/mbstring.installation.php)
 - [mysqlnd](http://php.net/manual/en/mysqlnd.install.php)
-- xml (enabled by default - don't turn it off)
+- xml (enabled by default - don't turn it off) -->

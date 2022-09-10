@@ -31,7 +31,7 @@
                                     <label for="user_img">Pictures Profile</label>
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <img src="/img/<?= $users['user_img']; ?>" class="img-thumbnail img-preview" style="height: 200px;">
+                                            <img src="/img/user/<?= $users['user_img']; ?>" class="img-thumbnail img-preview" style="height: 150px;">
                                         </div>
                                         <div class="col-sm-8">
                                             <div class="custom-file">
