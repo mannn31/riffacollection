@@ -109,6 +109,21 @@
                 imgPreview.src = e.target.result;
             }
         }
+
+        function previewImgs() {
+            const pict = document.querySelector('#user_img');
+            const pictLabel = document.querySelector('.custom-file-label');
+            const imgPreview = document.querySelector('.img-preview');
+
+            pictLabel.textContent = user_img.files[0].name;
+
+            const filePic = new FileReader();
+            filePic.readAsDataURL(user_img.files[0]);
+
+            filePic.onload = function(e) {
+                imgPreview.src = e.target.result;
+            }
+        }
     </script>
 
 </body>

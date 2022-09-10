@@ -5,10 +5,10 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="mb-4 text-gray-800 text-center"><strong>User Detail</strong></h1>
+    <h1 class="mb-4 text-gray-800 text-center"><strong>My Profil</strong></h1>
 
-    <div class="row justify-content-center">
-        <div class="col-lg-8">
+    <div class="row justify-content-center mb-4">
+        <div class="col-lg-6">
             <div class="card py-3 px-3">
                 <div class="row no-gutters">
                     <div class="col-md-4 my-auto">
@@ -23,8 +23,9 @@
                                 <li class="list-group-item"><?= $user->username; ?></li>
                                 <li class="list-group-item"><?= $user->email; ?></li>
                                 <li class="list-group-item"><span class="badge badge-<?= ($user->name == 'admin') ? 'info' : 'warning' ?>"><?= $user->name; ?></span></li>
-                                <li class="list-group-item"><small class="text-muted">Created at <?= $user->created_at; ?></small></li>
-                                <li class="list-group-item"><small><a href="<?= base_url('/admin/manage-users'); ?>">&laquo; Back to Manage Users</a></small></li>
+                                <li class="list-group-item">
+                                    <a href="<?= base_url('profile/edit/' . user()->id); ?>" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
+                                </li>
                             </ul>
                         </div>
                     </div>

@@ -8,20 +8,20 @@
     <h1 class="mb-4 text-gray-800 text-center"><strong>Welcome To Riffa Collection</strong></h1>
 
     <!-- Categories -->
-    <div class="row mt-3">
-        <div class="col-6 col-lg-3">
-            <a href="#" class="btn rounded">
-                <div class="bg-image card shadow-1-strong" style="background-image: url('<?= base_url(); ?>/img/category/pashmina.jpg'); height: 300px">
-                    <div class="mask rounded" style="background-color: rgba(0, 0, 0, 0.6);">
-                        <div class="d-flex justify-content-center align-items-center" style="height: 300px;">
-                            <div class="card-body text-white">
-                                <h1 class="text-white mb-0">Page title</h1>
-                            </div>
+    
+    <div class="row row-cols-2 row-cols-md-4">
+        <?php foreach ($categories as $cat) : ?>
+            <div class="col mb-4">
+                <div class="card">
+                    <a href="#" class="btn rounded">
+                        <img src="<?= base_url(); ?>/img/category/<?= $cat['pic_cat']; ?>" class="card-img-top" style="height: 200px;">
+                        <div class="card-body">
+                            <h5 class="card-title"><?= $cat['nm_cat']; ?></h5>
                         </div>
-                    </div>
+                    </a>
                 </div>
-            </a>
-        </div>
+            </div>
+        <?php endforeach; ?>
     </div>
     <!-- End Categories -->
 
