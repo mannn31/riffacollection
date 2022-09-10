@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 10, 2022 at 04:12 AM
+-- Generation Time: Sep 10, 2022 at 03:38 PM
 -- Server version: 5.7.33
--- PHP Version: 8.1.9
+-- PHP Version: 7.4.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -183,7 +183,24 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (67, '127.0.0.1', 'admin@gmail.com', 1, '2022-09-08 10:47:27', 1),
 (68, '127.0.0.1', 'admin@gmail.com', 1, '2022-09-08 14:16:03', 1),
 (69, '127.0.0.1', 'admin@gmail.com', 1, '2022-09-09 19:24:11', 1),
-(70, '127.0.0.1', 'admin@gmail.com', 1, '2022-09-09 19:31:39', 1);
+(70, '127.0.0.1', 'admin@gmail.com', 1, '2022-09-09 19:31:39', 1),
+(71, '127.0.0.1', 'admin@gmail.com', 1, '2022-09-09 23:46:10', 1),
+(72, '127.0.0.1', 'customer@gmail.com', 2, '2022-09-10 00:25:04', 1),
+(73, '127.0.0.1', 'admin@gmail.com', 1, '2022-09-10 00:26:11', 1),
+(74, '127.0.0.1', 'customer@gmail.com', 2, '2022-09-10 00:42:00', 1),
+(75, '127.0.0.1', 'customer', NULL, '2022-09-10 01:21:08', 0),
+(76, '127.0.0.1', 'admin', NULL, '2022-09-10 01:21:16', 0),
+(77, '127.0.0.1', 'admin', NULL, '2022-09-10 01:21:47', 0),
+(78, '127.0.0.1', 'customer', NULL, '2022-09-10 01:22:36', 0),
+(79, '127.0.0.1', 'admin@gmail.com', 1, '2022-09-10 01:44:15', 1),
+(80, '127.0.0.1', 'admin@gmail.com', 1, '2022-09-10 10:08:04', 1),
+(81, '127.0.0.1', 'customer@gmail.com', 2, '2022-09-10 10:08:21', 1),
+(82, '127.0.0.1', 'admin@gmail.com', 1, '2022-09-10 10:08:28', 1),
+(83, '127.0.0.1', 'customer@gmail.com', 2, '2022-09-10 10:08:57', 1),
+(84, '127.0.0.1', 'admin@gmail.com', 1, '2022-09-10 10:09:11', 1),
+(85, '127.0.0.1', 'admin@gmail.com', 1, '2022-09-10 10:20:35', 1),
+(86, '127.0.0.1', 'customer@gmail.com', 2, '2022-09-10 10:23:30', 1),
+(87, '127.0.0.1', 'admin@gmail.com', 1, '2022-09-10 10:32:27', 1);
 
 -- --------------------------------------------------------
 
@@ -324,8 +341,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `username`, `fullname`, `user_img`, `password_hash`, `reset_hash`, `reset_at`, `reset_expires`, `activate_hash`, `status`, `status_message`, `active`, `force_pass_reset`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'admin@gmail.com', 'admin', NULL, 'default.svg', '$2y$10$hG1uNJW8AVWQP6CBA8QZd.w85gXWNb4AQDwUgc.xoWjjIcJ/YcnA2', NULL, NULL, NULL, '5792b3d80050ff94d9dd2eec88ba7330', NULL, NULL, 1, 0, '2022-08-31 16:37:09', '2022-08-31 16:37:09', NULL),
-(2, 'customer@gmail.com', 'customer', NULL, 'default.svg', '$2y$10$bsxSNI2e8G5lma2erLo3uudFZ7tPWJjhOUzpY8yoziqMExtsUaZ9a', NULL, NULL, NULL, '1e33ee7ee8c4440bc1b28188e6ade24c', NULL, NULL, 0, 0, '2022-08-31 16:55:56', '2022-08-31 16:55:56', NULL);
+(1, 'admin@gmail.com', 'admin', 'Admin', 'admin.png', '$2y$10$hG1uNJW8AVWQP6CBA8QZd.w85gXWNb4AQDwUgc.xoWjjIcJ/YcnA2', NULL, NULL, NULL, '5792b3d80050ff94d9dd2eec88ba7330', NULL, NULL, 1, 0, '2022-08-31 16:37:09', '2022-09-10 01:46:34', NULL),
+(2, 'customer@gmail.com', 'customer', 'Hilman', 'customer.png', '$2y$10$bsxSNI2e8G5lma2erLo3uudFZ7tPWJjhOUzpY8yoziqMExtsUaZ9a', NULL, NULL, NULL, '1e33ee7ee8c4440bc1b28188e6ade24c', NULL, NULL, 0, 0, '2022-08-31 16:55:56', '2022-09-10 01:43:16', NULL);
 
 --
 -- Indexes for dumped tables
@@ -432,7 +449,7 @@ ALTER TABLE `auth_groups`
 -- AUTO_INCREMENT for table `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT for table `auth_permissions`
@@ -456,7 +473,7 @@ ALTER TABLE `auth_tokens`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `migrations`
