@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 07, 2022 at 03:34 AM
+-- Generation Time: Sep 10, 2022 at 04:12 AM
 -- Server version: 5.7.33
 -- PHP Version: 8.1.9
 
@@ -173,7 +173,17 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (57, '127.0.0.1', 'customer@gmail.com', 2, '2022-09-06 07:15:23', 1),
 (58, '127.0.0.1', 'admin@gmail.com', 1, '2022-09-06 07:15:39', 1),
 (59, '127.0.0.1', 'customer@gmail.com', 2, '2022-09-06 07:26:52', 1),
-(60, '127.0.0.1', 'admin@gmail.com', 1, '2022-09-06 07:27:00', 1);
+(60, '127.0.0.1', 'admin@gmail.com', 1, '2022-09-06 07:27:00', 1),
+(61, '127.0.0.1', 'admin@gmail.com', 1, '2022-09-07 21:30:15', 1),
+(62, '127.0.0.1', 'admin@gmail.com', 1, '2022-09-07 21:32:55', 1),
+(63, '127.0.0.1', 'admin@gmail.com', 1, '2022-09-07 21:33:21', 1),
+(64, '127.0.0.1', 'admin@gmail.com', 1, '2022-09-08 00:27:55', 1),
+(65, '127.0.0.1', 'admin@gmail.com', 1, '2022-09-08 00:32:23', 1),
+(66, '127.0.0.1', 'admin@gmail.com', 1, '2022-09-08 06:56:45', 1),
+(67, '127.0.0.1', 'admin@gmail.com', 1, '2022-09-08 10:47:27', 1),
+(68, '127.0.0.1', 'admin@gmail.com', 1, '2022-09-08 14:16:03', 1),
+(69, '127.0.0.1', 'admin@gmail.com', 1, '2022-09-09 19:24:11', 1),
+(70, '127.0.0.1', 'admin@gmail.com', 1, '2022-09-09 19:31:39', 1);
 
 -- --------------------------------------------------------
 
@@ -234,6 +244,31 @@ CREATE TABLE `auth_users_permissions` (
   `user_id` int(11) UNSIGNED NOT NULL DEFAULT '0',
   `permission_id` int(11) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` int(11) NOT NULL,
+  `nm_cat` varchar(255) NOT NULL,
+  `pic_cat` varchar(255) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `nm_cat`, `pic_cat`, `created_at`, `updated_at`) VALUES
+(1, 'Zoya', 'zoya.png', NULL, NULL),
+(2, 'Umama Scarf', 'umama-scarf.png', NULL, NULL),
+(3, 'Paris Premium', 'paris-premium.jpeg', '2022-09-08 14:18:46', '2022-09-08 14:18:46'),
+(4, 'Bela Square', 'bella-square.jpg', '2022-09-08 14:19:39', '2022-09-08 14:19:39'),
+(5, 'Pashmina Cyra', 'pashmina-cyra.png', '2022-09-09 20:02:41', '2022-09-09 21:54:10');
 
 -- --------------------------------------------------------
 
@@ -358,6 +393,12 @@ ALTER TABLE `auth_users_permissions`
   ADD KEY `user_id_permission_id` (`user_id`,`permission_id`);
 
 --
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
@@ -391,7 +432,7 @@ ALTER TABLE `auth_groups`
 -- AUTO_INCREMENT for table `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT for table `auth_permissions`
@@ -410,6 +451,12 @@ ALTER TABLE `auth_reset_attempts`
 --
 ALTER TABLE `auth_tokens`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `migrations`
