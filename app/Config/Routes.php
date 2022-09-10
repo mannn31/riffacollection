@@ -39,13 +39,19 @@ $routes->get('/', 'Home::index');
 $routes->get('/product', 'Home::product');
 $routes->get('/user', 'User::index');
 
-// Routes ADMIN
+/* Routes ADMIN */
 $routes->get('/admin', 'Admin::index', ['filter' => 'role:admin']);
 $routes->get('/admin/index', 'Admin::index', ['filter' => 'role:admin']);
 $routes->get('/admin/product', 'Admin::managePro', ['filter' => 'role:admin']);
+
+// Manage Categories
 $routes->get('/admin/categories', 'Categories::index', ['filter' => 'role:admin']);
 $routes->get('/admin/categories/add', 'Categories::create', ['filter' => 'role:admin']);
 $routes->post('/admin/categories/save', 'Categories::save', ['filter' => 'role:admin']);
+$routes->delete('/admin/categories/(:num)', 'Categories::delete/$1', ['filter' => 'role:admin']);
+$routes->get('/admin/categories/edit/(:segment)', 'Categories::edit/$1', ['filter' => 'role:admin']);
+$routes->post('/admin/categories/update/(:num)', 'Categories::update/$1', ['filter' => 'role:admin']);
+
 $routes->get('/admin/manage-users', 'Admin::manageUsers', ['filter' => 'role:admin']);
 $routes->get('/admin/(:num)', 'Admin::detail/$1', ['filter' => 'role:admin']);
 

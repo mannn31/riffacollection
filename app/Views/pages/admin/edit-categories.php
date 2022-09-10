@@ -5,7 +5,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="mb-4 text-gray-800 text-center"><strong>Form Add Categories</strong></h1>
+    <h1 class="mb-4 text-gray-800 text-center"><strong>Form Edit Categories</strong></h1>
 
     <div class="row justify-content-center">
         <div class="col-lg-6">
@@ -13,11 +13,11 @@
                 <div class="row no-gutters">
                     <div class="col-md-12">
                         <div class="card-body">
-                            <form action="/admin/categories/save" method="POST" enctype="multipart/form-data">
+                            <form action="/admin/categories/update/<?= $categories['id']; ?>" method="POST" enctype="multipart/form-data">
                                 <?= csrf_field(); ?>
                                 <div class="form-group">
                                     <label for="nm_cat">Name Categories</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('nm_cat')) ? 'is-invalid' : ''; ?>" id="nm_cat" name="nm_cat" autofocus value="<?= old('nm_cat'); ?>">
+                                    <input type="text" class="form-control <?= ($validation->hasError('nm_cat')) ? 'is-invalid' : ''; ?>" id="nm_cat" name="nm_cat" autofocus value="<?= $categories['nm_cat']; ?>">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('nm_cat'); ?>
                                     </div>
@@ -26,7 +26,7 @@
                                     <label for="pic_cat">Pictures</label>
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <img src="/img/category/default.png" class="img-thumbnail img-preview" style="height: 100px;">
+                                            <img src="/img/category/<?= $categories['pic_cat']; ?>" class="img-thumbnail img-preview" style="height: 100px;">
                                         </div>
                                         <div class="col-sm-8">
                                             <div class="custom-file">
@@ -34,7 +34,7 @@
                                                 <div class="invalid-feedback">
                                                     <?= $validation->getError('pic_cat'); ?>
                                                 </div>
-                                                <label for="pic_cat" class="custom-file-label">Choose File</label>
+                                                <label for="pic_cat" class="custom-file-label"><?= $categories['pic_cat']; ?></label>
                                             </div>
                                         </div>
                                     </div>

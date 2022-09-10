@@ -17,10 +17,10 @@ class Categories extends BaseController
 
     public function index()
     {
-        $categories = $this->CategoriesModel->findAll();
+        // $categories = $this->CategoriesModel->findAll();
         $data = [
             'title' => 'Manage Categories',
-            'categories' => $categories
+            'categories' => $this->CategoriesModel->getCategories()
         ];
 
 
@@ -48,31 +48,93 @@ class Categories extends BaseController
                     'required' => 'The name must be filled in first'
                 ]
             ],
-            // 'pic_cat' => [
-            //     'rules' => 'uploaded[pic_cat]|max_size[pic_cat,1024]|is_image[pic_cat]|ext_in[pic_cat,png,jpg,gif]',
-            //     'errors' => [
-            //         'uploaded' => 'Select an image first',
-            //         'max_size' => 'The file should not exceed 1MB',
-            //         'is_image' => 'The file must be JPG/JPEG/PNG',
-            //         'ext_in' => 'The file must be JPG/JPEG/PNG'
-            //     ]
-            // ]
+            'pic_cat' => [
+                'rules' => 'uploaded[pic_cat]|max_size[pic_cat,1024]|is_image[pic_cat]|ext_in[pic_cat,png,jpg,gif]',
+                'errors' => [
+                    'uploaded' => 'Select an image first',
+                    'max_size' => 'The file should not exceed 1MB',
+                    'is_image' => 'The file must be JPG/JPEG/PNG',
+                    'ext_in' => 'The file must be JPG/JPEG/PNG'
+                ]
+            ]
         ])) {
             return redirect()->to('/admin/categories/add')->withInput();
         }
-        // //pick image
-        // $fileImg = $this->request->getFile('pic_cat');
-        // //move image
-        // $fileImg->move('img/category');
-        // //changed name image
-        // $picCat = $fileImg->getName();
+
+        //pick image
+        $fileImg = $this->request->getFile('pic_cat');
+        //move image
+        $fileImg->move('img/category');
+        //changed name image
+        $picCat = $fileImg->getName();
 
         $this->CategoriesModel->save([
             'nm_cat' => $this->request->getVar('nm_cat'),
-            // 'pic_cat' => $picCat
+            'pic_cat' => $picCat
         ]);
 
         session()->setFlashdata('pesan', 'Categories has been added.');
+
+        return redirect()->to('/admin/categories');
+    }
+
+    public function delete($id)
+    {
+        $this->CategoriesModel->delete($id);
+
+        session()->setFlashdata('pesan', 'Categories has been deleted.');
+
+        return redirect()->to('/admin/categories');
+    }
+
+    public function edit($id)
+    {
+        $data = [
+            'title' => 'Edit Categories',
+            'validation' => \Config\Services::validation(),
+            'categories' => $this->CategoriesModel->getCategories($id)
+        ];
+
+        return view('pages/admin/edit-categories', $data);
+    }
+
+    public function update($id)
+    {
+        // //validate
+        // if (!$this->validate([
+        //     'nm_cat' => [
+        //         'rules' => 'required',
+        //         'errors' => [
+        //             'required' => 'The name must be filled in first'
+        //         ]
+        //     ],
+        //     'pic_cat' => [
+        //         'rules' => 'uploaded[pic_cat]|max_size[pic_cat,1024]|is_image[pic_cat]|ext_in[pic_cat,png,jpg,gif]',
+        //         'errors' => [
+        //             'uploaded' => 'Select an image first',
+        //             'max_size' => 'The file should not exceed 1MB',
+        //             'is_image' => 'The file must be JPG/JPEG/PNG',
+        //             'ext_in' => 'The file must be JPG/JPEG/PNG'
+        //         ]
+        //     ]
+        // ])) {
+        //     return redirect()->to('/admin/categories/edit/' . $this->request->getVar('id'))->withInput();
+        // }
+
+        //pick image
+        $fileImg = $this->request->getFile('pic_cat');
+        //move image
+        $fileImg->move('img/category');
+        //changed name image
+        $picCat = $fileImg->getName();
+
+        $this->CategoriesModel->save([
+            'id' => $id,
+            'nm_cat' => $this->request->getVar('nm_cat'),
+            'pic_cat' => $picCat
+        ]);
+
+        session()->setFlashdata('pesan', 'Categories has been updated.');
 
         return redirect()->to('/admin/categories');
     }
