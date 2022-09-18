@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 10, 2022 at 03:38 PM
+-- Generation Time: Sep 17, 2022 at 08:49 PM
 -- Server version: 5.7.33
--- PHP Version: 7.4.19
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -200,7 +200,11 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (84, '127.0.0.1', 'admin@gmail.com', 1, '2022-09-10 10:09:11', 1),
 (85, '127.0.0.1', 'admin@gmail.com', 1, '2022-09-10 10:20:35', 1),
 (86, '127.0.0.1', 'customer@gmail.com', 2, '2022-09-10 10:23:30', 1),
-(87, '127.0.0.1', 'admin@gmail.com', 1, '2022-09-10 10:32:27', 1);
+(87, '127.0.0.1', 'admin@gmail.com', 1, '2022-09-10 10:32:27', 1),
+(88, '127.0.0.1', 'admin@gmail.com', 1, '2022-09-11 10:28:17', 1),
+(89, '127.0.0.1', 'customer@gmail.com', 2, '2022-09-11 10:28:47', 1),
+(90, '127.0.0.1', 'admin@gmail.com', 1, '2022-09-11 10:29:44', 1),
+(91, '127.0.0.1', 'admin@gmail.com', 1, '2022-09-17 10:40:32', 1);
 
 -- --------------------------------------------------------
 
@@ -269,7 +273,7 @@ CREATE TABLE `auth_users_permissions` (
 --
 
 CREATE TABLE `categories` (
-  `id` int(11) NOT NULL,
+  `id` int(11) UNSIGNED NOT NULL,
   `nm_cat` varchar(255) NOT NULL,
   `pic_cat` varchar(255) NOT NULL,
   `created_at` datetime DEFAULT NULL,
@@ -286,6 +290,25 @@ INSERT INTO `categories` (`id`, `nm_cat`, `pic_cat`, `created_at`, `updated_at`)
 (3, 'Paris Premium', 'paris-premium.jpeg', '2022-09-08 14:18:46', '2022-09-08 14:18:46'),
 (4, 'Bela Square', 'bella-square.jpg', '2022-09-08 14:19:39', '2022-09-08 14:19:39'),
 (5, 'Pashmina Cyra', 'pashmina-cyra.png', '2022-09-09 20:02:41', '2022-09-09 21:54:10');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories_product`
+--
+
+CREATE TABLE `categories_product` (
+  `categories_id` int(11) UNSIGNED NOT NULL DEFAULT '0',
+  `product_id` int(11) UNSIGNED NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `categories_product`
+--
+
+INSERT INTO `categories_product` (`categories_id`, `product_id`) VALUES
+(1, 1),
+(2, 2);
 
 -- --------------------------------------------------------
 
@@ -309,6 +332,31 @@ CREATE TABLE `migrations` (
 
 INSERT INTO `migrations` (`id`, `version`, `class`, `group`, `namespace`, `time`, `batch`) VALUES
 (1, '2017-11-20-223112', 'Myth\\Auth\\Database\\Migrations\\CreateAuthTables', 'default', 'Myth\\Auth', 1661977385, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product`
+--
+
+CREATE TABLE `product` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `nm_product` varchar(255) NOT NULL,
+  `desc_product` text NOT NULL,
+  `stock` int(11) NOT NULL,
+  `price` int(11) NOT NULL,
+  `img_product` varchar(255) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`id`, `nm_product`, `desc_product`, `stock`, `price`, `img_product`, `created_at`, `updated_at`) VALUES
+(1, 'Zoya Yona Scarf - Kerudung Hijab Segiempat', '<div class=\"mt-6 text-preline text-preline--nofix break-word\" data-v-3f63929b=\"\">Zoya Yona Scarf - Kerudung Hijab Segiempat</div>\r\n<div class=\"mt-6 text-preline text-preline--nofix break-word\" data-v-3f63929b=\"\">&nbsp;</div>\r\n<div class=\"mt-6 text-preline text-preline--nofix break-word\" data-v-3f63929b=\"\"><strong>DETAIL SCARF :&nbsp;</strong></div>\r\n<div class=\"mt-6 text-preline text-preline--nofix break-word\" data-v-3f63929b=\"\">- Material : Voal</div>\r\n<div class=\"mt-6 text-preline text-preline--nofix break-word\" data-v-3f63929b=\"\">- Ukuran : 115 x 115 cm&nbsp;</div>\r\n<div class=\"mt-6 text-preline text-preline--nofix break-word\" data-v-3f63929b=\"\">- Finishing jahit stik + Label Zoya</div>\r\n<div class=\"mt-6 text-preline text-preline--nofix break-word\" data-v-3f63929b=\"\">&nbsp;</div>\r\n<div class=\"mt-6 text-preline text-preline--nofix break-word\" data-v-3f63929b=\"\">Warna produk yang ditampilkan merupakan produk yang sama dengan aslinya. Akan tetapi dikarenakan cahaya, kamera maupun warna kontras pada monitor komputer atau handphone maka terdapat perbedaan warna dapat terjadi, Toleransi perbedaan warna 5-15% . Mohon dapat dimaklumi.</div>\r\n<div class=\"mt-6 text-preline text-preline--nofix break-word\" data-v-3f63929b=\"\">&nbsp;</div>\r\n<div class=\"mt-6 text-preline text-preline--nofix break-word\" data-v-3f63929b=\"\"><strong>PEMESANAN </strong></div>\r\n<div class=\"mt-6 text-preline text-preline--nofix break-word\" data-v-3f63929b=\"\">Mohon dapat dipilih berdasarkan varian Warna yang telah tersedia bukan BERDASARKAN CATATAN.</div>\r\n<div class=\"mt-6 text-preline text-preline--nofix break-word\" data-v-3f63929b=\"\">&nbsp;</div>\r\n<div class=\"mt-6 text-preline text-preline--nofix break-word\" data-v-3f63929b=\"\"><strong>PENGIRIMAN </strong></div>\r\n<div class=\"mt-6 text-preline text-preline--nofix break-word\" data-v-3f63929b=\"\">Pengiriman produk mempunyai waktu pengiriman yang berbeda - beda tergantung dari wilayah alamat anda dan jenis expedisi layanan yang anda pilih.</div>\r\n<div class=\"mt-6 text-preline text-preline--nofix break-word\" data-v-3f63929b=\"\">Masa pengemasan produk yang anda beli maksimal 2 - 4 hari dari tanggal pembayaran anda.</div>\r\n<div class=\"mt-6 text-preline text-preline--nofix break-word\" data-v-3f63929b=\"\">Pengiriman hanya dilakukan setiap hari Senin - Sabtu. Hari Minggu dan Libur Nasional tidak ada pengiriman.</div>\r\n<div class=\"mt-6 text-preline text-preline--nofix break-word\" data-v-3f63929b=\"\">&nbsp;</div>\r\n<div class=\"mt-6\" data-v-3f63929b=\"\">Berat: 110g</div>', 20, 105000, 'Zoya - Yana Scarf_1.jpg', '2022-09-17 15:03:11', '2022-09-17 15:03:11'),
+(2, 'Voal Miracle Plain', '<p>Voal Miracle Plain&nbsp;by Umama Scarf. Terbuat dari bahan Voal Miracle&nbsp;yang adem, mudah dibentuk dan nyaman dipakai. Tersedia dalam 50 warna cantik.<br><br>Material :&nbsp;Voal Miracle<br>Size : 110 x 110</p>', 25, 35000, 'Umama Scarf - Voal Miracle.jpg', '2022-09-17 15:45:05', '2022-09-17 15:45:05');
 
 -- --------------------------------------------------------
 
@@ -416,9 +464,22 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `categories_product`
+--
+ALTER TABLE `categories_product`
+  ADD KEY `categories_product_product_id_foreign` (`product_id`),
+  ADD KEY `categories_id_product_id` (`categories_id`,`product_id`);
+
+--
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `product`
+--
+ALTER TABLE `product`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -449,7 +510,7 @@ ALTER TABLE `auth_groups`
 -- AUTO_INCREMENT for table `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
 -- AUTO_INCREMENT for table `auth_permissions`
@@ -473,13 +534,19 @@ ALTER TABLE `auth_tokens`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `product`
+--
+ALTER TABLE `product`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -517,6 +584,13 @@ ALTER TABLE `auth_tokens`
 ALTER TABLE `auth_users_permissions`
   ADD CONSTRAINT `auth_users_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `auth_permissions` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `auth_users_permissions_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `categories_product`
+--
+ALTER TABLE `categories_product`
+  ADD CONSTRAINT `categories_product_categories_id_foreign` FOREIGN KEY (`categories_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `categories_product_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
