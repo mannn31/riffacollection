@@ -13,7 +13,8 @@ class CategoriesModel extends Model
     public function getCategories($id = false)
     {
         if ($id == false) {
-            return $this->findAll();
+            // return $this->findAll();
+            return $this->paginate(2, 'categories');
         }
 
         return $this->where(['id' => $id])->first();

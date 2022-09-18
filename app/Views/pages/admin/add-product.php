@@ -56,6 +56,9 @@
                                                     <?= $validation->getError('img_product'); ?>
                                                 </div>
                                                 <label for="img_product" class="custom-file-label">Choose File</label>
+                                                <div class="col-sm-8">
+                                                    <span>*Pictures must be filled in</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

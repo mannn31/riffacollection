@@ -5,7 +5,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="mb-4 text-gray-800 text-center"><strong>Detail Categories</strong></h1>
+    <h1 class="mb-4 text-gray-800 text-center"><strong>Manage Order</strong></h1>
 
     <!-- Product -->
     <div class="row mt-3">
@@ -22,33 +22,39 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Product ID</th>
+                                    <th>Order ID</th>
+                                    <th>Name Order</th>
+                                    <th>Adress Order</th>
+                                    <th>No Handphone</th>
                                     <th>Name Product</th>
-                                    <th>Description</th>
-                                    <th>Stock Product</th>
-                                    <th>Price</th>
-                                    <th>Pictures</th>
+                                    <th>Qty</th>
+                                    <th>Total Price</th>
+                                    <th>Payment</th>
+                                    <th>Proof Payment</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php if (empty($capo)) : ?>
+                                <?php if (empty($ordr)) : ?>
                                     <tr>
-                                        <td colspan="8" class="text-center">No Products Yet</td>
+                                        <td colspan="10" class="text-center">No Orders Yet</td>
                                     </tr>
                                 <?php else : ?>
                                     <?php $i = 1; ?>
-                                    <?php foreach ($capo as $cp) : ?>
+                                    <?php foreach ($ordr as $o) : ?>
                                         <tr>
                                             <td><?= $i++; ?></td>
-                                            <td>P-<?= $cp->proid; ?></td>
-                                            <td><?= $cp->nm_product; ?></td>
-                                            <td><?= $cp->desc_product; ?></td>
-                                            <td><?= $cp->stock; ?></td>
-                                            <td>Rp. <?= $cp->price; ?>,-</td>
-                                            <td><img src="/img/product/<?= $cp->img_product; ?>" style="height: 100px;"></td>
+                                            <td>O-<?= $o->orderid; ?></td>
+                                            <td><?= $o->fullname; ?></td>
+                                            <td><?= $o->adress; ?></td>
+                                            <td><?= $o->no_hp; ?></td>
+                                            <td><?= $o->nm_product; ?></td>
+                                            <td><?= $o->qty; ?></td>
+                                            <td>Rp. <?= $o->total_price; ?>,-</td>
+                                            <td><?= $o->payment; ?></td>
+                                            <td><img src="/img/payment/<?= $o->img_proof; ?>" style="height: 100px;"></td>
                                             <td>
-                                                <form action="/admin/product/<?= $cp->proid; ?>" method="POST" class="d-inline">
+                                                <form action="/admin/order/<?= $o->orderid; ?>" method="POST" class="d-inline">
                                                     <?= csrf_field(); ?>
                                                     <input type="hidden" name="_method" value="DELETE">
                                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')"><i class="fa-solid fa-trash"></i></button>

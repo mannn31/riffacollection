@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 18, 2022 at 04:06 PM
+-- Generation Time: Sep 18, 2022 at 04:11 PM
 -- Server version: 5.7.33
 -- PHP Version: 8.1.9
 
@@ -357,6 +357,13 @@ CREATE TABLE `orders` (
   `created_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `user_id`, `adress`, `no_hp`, `product_id`, `qty`, `total_price`, `payment`, `img_proof`, `created_at`) VALUES
+(1, 2, 'Cipacing', '087839736104', 2, 2, '70.000', 'BNI', 'conot-bukti.jpg', '2022-09-18 23:10:07');
+
 -- --------------------------------------------------------
 
 --
@@ -576,7 +583,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `product`

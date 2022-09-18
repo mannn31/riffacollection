@@ -23,10 +23,13 @@ class Categories extends BaseController
 
     public function index()
     {
+        $currentPage = $this->request->getVar('page_categories') ? $this->request->getVar('page_categories') : 1;
         // $categories = $this->CategoriesModel->findAll();
         $data = [
             'title' => 'Manage Categories',
-            'categories' => $this->CategoriesModel->getCategories()
+            'categories' => $this->CategoriesModel->getCategories(),
+            'pager' => $this->CategoriesModel->pager,
+            'currentPage' => $currentPage
         ];
 
 
@@ -55,7 +58,7 @@ class Categories extends BaseController
                 ]
             ],
             'pic_cat' => [
-                'rules' => 'uploaded[pic_cat]|max_size[pic_cat,1024]|is_image[pic_cat]|ext_in[pic_cat,png,jpg,gif]',
+                'rules' => 'uploaded[pic_cat]|max_size[pic_cat,1024]|is_image[pic_cat]|ext_in[pic_cat,png,jpg,gif,jpeg]',
                 'errors' => [
                     'uploaded' => 'Select an image first',
                     'max_size' => 'The file should not exceed 1MB',
@@ -155,7 +158,7 @@ class Categories extends BaseController
         $this->builder->where('categories.id', $id);
         $query = $this->builder->get();
 
-        $data['capo'] = $query->getRow();
+        $data['capo'] = $query->getResult();
 
         // if (empty($data['capo'])) {
         //     return redirect()->to('pages/categories');
@@ -167,10 +170,9 @@ class Categories extends BaseController
     public function addCapo()
     {
         $data = [
-            'title' => 'Edit Product',
             'validation' => \Config\Services::validation(),
-            'product' => $this->ProductModel->getProduct(),
-            'categories' => $this->CategoriesModel->getCategories()
+            'product' => $this->ProductModel->findAll(),
+            'categories' => $this->CategoriesModel->findAll()
         ];
         $data['title'] = 'Add Categories Of Product';
 
@@ -207,7 +209,7 @@ class Categories extends BaseController
         $this->builder->where('categories.id', $id);
         $query = $this->builder->get();
 
-        $data['capo'] = $query->getRow();
+        $data['capo'] = $query->getResult();
 
         // if (empty($data['capo'])) {
         //     return redirect()->to('pages/categories');

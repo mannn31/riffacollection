@@ -14,7 +14,7 @@
                 <div class="card-body">
                     <div class="row mb-3">
                         <div class="col-12 text-right">
-                            <a class="btn btn-info" href="#" data-toggle="modal" data-target="#addUse">
+                            <a class="btn btn-info" href="/admin/manage-users/add">
                                 <i class="fas fa-plus"></i>
                                 Add Users
                             </a>
@@ -32,18 +32,27 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php $i = 1; ?>
+                                <?php $i = 1 + (5 * ($currentPage - 1)); ?>
                                 <?php foreach ($users as $user) : ?>
                                     <tr>
                                         <td><?= $i++; ?></td>
                                         <td><?= $user->username; ?></td>
                                         <td><?= $user->email; ?></td>
                                         <td><?= $user->name; ?></td>
-                                        <td><a href="<?= base_url('admin/' . $user->userid); ?>" class="btn btn-info">Detail</a></td>
+                                        <td>
+                                            <a href="<?= base_url('admin/' . $user->userid); ?>" class="btn btn-info">Detail</a>
+                                            <a href="<?= base_url('admin/manage-users/edit/' . $user->userid); ?>" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
+                                            <form action="/admin/manage-users/<?= $user->userid; ?>" method="POST" class="d-inline">
+                                                <?= csrf_field(); ?>
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')"><i class="fa-solid fa-trash"></i></button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
+                        <?= $pager->links('users', 'pagination'); ?>
                     </div>
                 </div>
             </div>
@@ -51,41 +60,6 @@
     </div>
     <!-- End Users -->
 
-</div>
-
-<!-- Users Modal-->
-<div class="modal fade" id="addUse" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add User</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <form action="/manage/addUser" method="POST">
-                <?= csrf_field(); ?>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" class="form-control" id="username" name="username" autofocus>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email address</label>
-                        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" name="password">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <button class="btn btn-info" type="submit" data-dismiss="modal">Save</button>
-                </div>
-            </form>
-        </div>
-    </div>
 </div>
 
 <?= $this->endSection(); ?>

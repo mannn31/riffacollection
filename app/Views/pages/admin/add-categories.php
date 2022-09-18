@@ -35,6 +35,9 @@
                                                     <?= $validation->getError('pic_cat'); ?>
                                                 </div>
                                                 <label for="pic_cat" class="custom-file-label">Choose File</label>
+                                                <div class="col-sm-8">
+                                                    <span>*Pictures must be filled in</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

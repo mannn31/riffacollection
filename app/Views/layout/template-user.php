@@ -160,6 +160,21 @@
                 imgPreview.src = e.target.result;
             }
         }
+
+        function previewImgb() {
+            const pict = document.querySelector('#img_proof');
+            const pictLabel = document.querySelector('.custom-file-label');
+            const imgPreview = document.querySelector('.img-preview');
+
+            pictLabel.textContent = img_proof.files[0].name;
+
+            const filePic = new FileReader();
+            filePic.readAsDataURL(img_proof.files[0]);
+
+            filePic.onload = function(e) {
+                imgPreview.src = e.target.result;
+            }
+        }
     </script>
 
 </body>

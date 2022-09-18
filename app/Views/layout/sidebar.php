@@ -64,10 +64,17 @@
         </li>
 
         <!-- Nav Item - Cart -->
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link" href="/admin/cart">
                 <i class="fas fa-fw fa-cart-shopping"></i>
                 <span>Cart</span></a>
+        </li> -->
+
+        <!-- Nav Item - Order -->
+        <li class="nav-item">
+            <a class="nav-link" href="/admin/order">
+                <i class="fas fa-fw fa-clipboard-list"></i>
+                <span>Orders</span></a>
         </li>
 
         <!-- Divider -->
@@ -85,7 +92,7 @@
                 <span>Manage Users</span></a>
         </li>
         <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item active">
+        <!-- <li class="nav-item active">
             <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
                 <i class="fas fa-fw fa-users-gear"></i>
                 <span>Manage Groups</span>
@@ -102,7 +109,7 @@
             <a class="nav-link" href="manage-permissions">
                 <i class="fas fa-fw fa-gears"></i>
                 <span>Manage Permissions</span></a>
-        </li>
+        </li> -->
     <?php endif; ?>
 
     <!-- Divider -->

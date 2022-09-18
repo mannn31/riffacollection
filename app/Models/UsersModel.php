@@ -13,7 +13,8 @@ class UsersModel extends Model
     public function getUsers($id = false)
     {
         if ($id == false) {
-            return $this->findAll();
+            // return $this->findAll();
+            return $this->paginate(5, 'users');
         }
 
         return $this->where(['id' => $id])->first();

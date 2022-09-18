@@ -32,7 +32,6 @@
                                     <th>No</th>
                                     <th>Product ID</th>
                                     <th>Name Product</th>
-                                    <th>Categories</th>
                                     <th>Description</th>
                                     <th>Stock Product</th>
                                     <th>Price</th>
@@ -41,28 +40,20 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php $i = 1; ?>
-                                <?php foreach ($product as $pro) : ?>
+                                <?php $i = 1 + (5 * ($currentPage - 1)); ?>
+                                <?php foreach ($product as $p) : ?>
                                     <tr>
                                         <td><?= $i++; ?></td>
-                                        <td>P-<?= $pro->productid; ?></td>
-                                        <td><?= $pro->nm_product; ?></td>
-                                        <td><?= $pro->nm_cat; ?></td>
-                                        <!-- <td>
-                                            <?php if ($pro->nm_cat == null) : ?>
-                                                Belum Memilih Category
-                                            <?php else : ?>
-                                                <?= $pro->nm_cat; ?>
-                                            <?php endif; ?>
-                                        </td> -->
-                                        <td><?= $pro->desc_product; ?></td>
-                                        <td><?= $pro->stock; ?></td>
-                                        <td>Rp. <?= $pro->price; ?>,-</td>
-                                        <td><img src="/img/product/<?= $pro->img_product; ?>" style="height: 100px;"></td>
+                                        <td>P-<?= $p['id']; ?></td>
+                                        <td><?= $p['nm_product']; ?></td>
+                                        <td><?= $p['desc_product']; ?></td>
+                                        <td><?= $p['stock']; ?></td>
+                                        <td>Rp. <?= $p['price']; ?>,-</td>
+                                        <td><img src="/img/product/<?= $p['img_product']; ?>" style="height: 100px;"></td>
                                         <td>
-                                            <a href="/admin/product/edit/<?= $pro->productid; ?>" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
+                                            <a href="/admin/product/edit/<?= $p['id']; ?>" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
 
-                                            <form action="/admin/product/<?= $pro->productid; ?>" method="POST" class="d-inline">
+                                            <form action="/admin/product/<?= $p['id']; ?>" method="POST" class="d-inline">
                                                 <?= csrf_field(); ?>
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')"><i class="fa-solid fa-trash"></i></button>
@@ -72,6 +63,7 @@
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
+                        <?= $pager->links('product', 'pagination'); ?>
                     </div>
                 </div>
             </div>

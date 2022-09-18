@@ -13,7 +13,8 @@ class ProductModel extends Model
     public function getProduct($id = false)
     {
         if ($id == false) {
-            return $this->findAll();
+            // return $this->findAll();
+            return $this->paginate(5, 'product');
         }
 
         return $this->where(['id' => $id])->first();

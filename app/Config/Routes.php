@@ -40,11 +40,19 @@ $routes->get('/profile/(:num)', 'User::profile/$1');
 $routes->get('/profile/edit/(:segment)', 'User::edit/$1');
 $routes->post('/profile/edit/update/(:num)', 'User::update/$1');
 $routes->get('/product', 'Home::product');
+$routes->get('/product/detail/(:num)', 'Home::detail/$1');
 $routes->get('/user', 'User::index');
 
 /* Routes ADMIN */
 $routes->get('/admin', 'Admin::index', ['filter' => 'role:admin']);
 $routes->get('/admin/index', 'Admin::index', ['filter' => 'role:admin']);
+$routes->get('/admin/manage-users/add', 'Admin::create', ['filter' => 'role:admin']);
+$routes->get('/admin/manage-users', 'Admin::manageUsers', ['filter' => 'role:admin']);
+$routes->post('/admin/manage-users/save', 'Admin::save', ['filter' => 'role:admin']);
+$routes->get('/admin/manage-users/edit/(:segment)', 'Admin::edit/$1');
+$routes->post('/admin/manage-users/edit/update/(:num)', 'Admin::update/$1');
+$routes->delete('/admin/manage-users/(:num)', 'Admin::delete/$1', ['filter' => 'role:admin']);
+$routes->get('/admin/(:num)', 'Admin::detail/$1', ['filter' => 'role:admin']);
 
 // Manage Categories
 $routes->get('/admin/categories', 'Categories::index', ['filter' => 'role:admin']);
@@ -56,7 +64,7 @@ $routes->post('/admin/categories/update/(:num)', 'Categories::update/$1', ['filt
 $routes->get('/admin/categories/detail/(:num)', 'Categories::detail/$1', ['filter' => 'role:admin']);
 $routes->get('/admin/categories/add-capo', 'Categories::addCapo', ['filter' => 'role:admin']);
 $routes->post('/admin/categories/capo/save', 'Categories::saveCapo', ['filter' => 'role:admin']);
-$routes->get('/admin/categories/product/(:num)', 'Categories::product/$1');
+$routes->get('/categories/product/(:num)', 'Categories::product/$1');
 
 // Manage Product
 $routes->get('/admin/product', 'Product::index', ['filter' => 'role:admin']);
@@ -66,8 +74,11 @@ $routes->delete('/admin/product/(:num)', 'Product::delete/$1', ['filter' => 'rol
 $routes->get('/admin/product/edit/(:segment)', 'Product::edit/$1', ['filter' => 'role:admin']);
 $routes->post('/admin/product/update/(:num)', 'Product::update/$1', ['filter' => 'role:admin']);
 
-$routes->get('/admin/manage-users', 'Admin::manageUsers', ['filter' => 'role:admin']);
-$routes->get('/admin/(:num)', 'Admin::detail/$1', ['filter' => 'role:admin']);
+// Manage Order
+$routes->get('/admin/order', 'Order::index', ['filter' => 'role:admin']);
+$routes->delete('/admin/order/(:num)', 'Order::delete/$1', ['filter' => 'role:admin']);
+
+
 
 /*
  * --------------------------------------------------------------------

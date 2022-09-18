@@ -23,6 +23,10 @@
                                 <i class="fas fa-plus"></i>
                                 Add Categories
                             </a>
+                            <a class="btn btn-warning" href="/admin/categories/add-capo">
+                                <i class="fas fa-plus"></i>
+                                Add Product
+                            </a>
                         </div>
                     </div>
                     <div class="table-responsive">
@@ -37,7 +41,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php $i = 1; ?>
+                                <?php $i = 1 + (2 * ($currentPage - 1)); ?>
                                 <?php foreach ($categories as $cat) : ?>
                                     <tr>
                                         <td><?= $i++; ?></td>
@@ -46,7 +50,8 @@
                                         <td><img src="/img/category/<?= $cat['pic_cat']; ?>" style="height: 100px;"></td>
                                         <td>
                                             <a href="<?= base_url('admin/categories/detail/' . $cat['id']); ?>" class="btn btn-info">See Product</a>
-                                            <a href="/admin/categories/edit/<?= $cat['id']; ?>" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
+
+                                            <a href="/admin/categories/edit/<?= $cat['id']; ?>" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
 
                                             <form action="/admin/categories/<?= $cat['id']; ?>" method="POST" class="d-inline">
                                                 <?= csrf_field(); ?>
@@ -59,6 +64,7 @@
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
+                        <?= $pager->links('categories', 'pagination'); ?>
                     </div>
                 </div>
             </div>

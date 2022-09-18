@@ -13,7 +13,7 @@
         <?php foreach ($categories as $cat) : ?>
             <div class="col mb-4">
                 <div class="card">
-                    <a href="<?= base_url('admin/categories/product/' . $cat['id']); ?>" class="btn rounded">
+                    <a href="<?= base_url('categories/product/' . $cat['id']); ?>" class="btn rounded">
                         <img src="<?= base_url(); ?>/img/category/<?= $cat['pic_cat']; ?>" class="card-img-top" style="height: 200px;">
                         <div class="card-body">
                             <h5 class="card-title"><?= $cat['nm_cat']; ?></h5>
@@ -41,7 +41,7 @@
                         <h5 class="card-title"><?= $pro['nm_product']; ?></h5>
                         <p class="card-text">Rp. <?= $pro['price']; ?>,-</p>
                         <div class="text-center">
-                            <a href="<?= base_url('/product-detail'); ?>" class="btn btn-info">See Product</a>
+                            <a href="<?= base_url('/product/detail/' . $pro['id']); ?>" class="btn btn-info">See Product</a>
                         </div>
                     </div>
                 </div>

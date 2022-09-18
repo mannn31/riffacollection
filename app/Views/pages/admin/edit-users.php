@@ -13,7 +13,7 @@
                 <div class="row no-gutters">
                     <div class="col-md-12">
                         <div class="card-body">
-                            <form action="/profile/edit/update/<?= $users['id']; ?>" method="POST" enctype="multipart/form-data">
+                            <form action="/admin/manage-users/edit/update/<?= $users['id']; ?>" method="POST" enctype="multipart/form-data">
                                 <?= csrf_field(); ?>
                                 <div class="form-group">
                                     <label for="fullname">Fullname</label>
@@ -36,14 +36,14 @@
                                         <div class="col-sm-8">
                                             <div class="custom-file">
                                                 <input type="file" class="custom-file-input" id="user_img" name="user_img" onchange="previewImgs()">
-                                                <label for="user_img" class="custom-file-label"><?= $users['user_img']; ?></label>
+                                                <label for="user_img" class="custom-file-label">Choose File</label>
                                             </div>
                                             <span>*Pictures must be filled in</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <a href="<?= base_url('profile/' . user()->id); ?>" class="btn btn-secondary">Cancel</a>
+                                    <a href="<?= base_url('admin/manage-users/') ?>" class="btn btn-secondary">Cancel</a>
                                     <button type="submit" class="btn btn-info">Save</button>
                                 </div>
                             </form>

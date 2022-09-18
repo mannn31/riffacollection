@@ -19,7 +19,7 @@
                         <h5 class="card-title"><?= $pro['nm_product']; ?></h5>
                         <p class="card-text">Rp. <?= $pro['price']; ?>,-</p>
                         <div class="text-center">
-                            <a href="<?= base_url('/product-detail'); ?>" class="btn btn-info">See Product</a>
+                            <a href="<?= base_url('/product/detail/' . $pro['id']); ?>" class="btn btn-info">See Product</a>
                         </div>
                     </div>
                 </div>

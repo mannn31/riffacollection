@@ -19,18 +19,21 @@ class Product extends BaseController
 
     public function index()
     {
-        // $categories = $this->CategoriesModel->findAll();
+        $currentPage = $this->request->getVar('page_product') ? $this->request->getVar('page_product') : 1;
+
         $data = [
             'title' => 'Manage Product',
-            // 'product' => $this->ProductModel->getProduct()
+            'product' => $this->ProductModel->getProduct(),
+            'pager' => $this->ProductModel->pager,
+            'currentPage' => $currentPage
         ];
 
-        $this->builder->select('product.id as productid, nm_product, desc_product, stock, price, img_product, nm_cat');
-        $this->builder->join('categories_product', 'categories_product.product_id = product.id');
-        $this->builder->join('categories', 'categories.id = categories_product.categories_id');
-        $query = $this->builder->get();
+        // $this->builder->select('product.id as productid, nm_cat');
+        // $this->builder->join('categories_product', 'categories_product.product_id = product.id');
+        // $this->builder->join('categories', 'categories.id = categories_product.categories_id');
+        // $query = $this->builder->get();
 
-        $data['product'] = $query->getResult();
+        // $data['pro'] = $query->getResult();
 
         return view('pages/admin/product', $data);
     }
@@ -74,7 +77,7 @@ class Product extends BaseController
                 ]
             ],
             'img_product' => [
-                'rules' => 'uploaded[img_product]|max_size[img_product,1024]|is_image[img_product]|ext_in[img_product,png,jpg,jpeg]',
+                'rules' => 'uploaded[img_product]|max_size[img_product,1024]|is_image[img_product]|ext_in[img_product,png,jpg,jpeg,gif]',
                 'errors' => [
                     'uploaded' => 'Select an image first',
                     'max_size' => 'The file should not exceed 1MB',

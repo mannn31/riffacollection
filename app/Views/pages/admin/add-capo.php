@@ -18,7 +18,7 @@
                                 <div class="form-group">
                                     <label for="cat_id">Name Categories</label>
                                     <select class="form-control" name="cat_id" id="cat_id">
-                                        <option disabled selected> Pilih </option>
+                                        <option disabled selected> Choose Categories </option>
                                         <?php foreach ($categories as $cat) : ?>
                                             <option value="<?= $cat['id']; ?>"><?= $cat['nm_cat']; ?></option>
                                         <?php endforeach; ?>
@@ -27,7 +27,7 @@
                                 <div class="form-group">
                                     <label for="pro_id">Name Product</label>
                                     <select class="form-control" name="pro_id" id="pro_id">
-                                        <option disabled selected> Pilih </option>
+                                        <option disabled selected> Choose Product </option>
                                         <?php foreach ($product as $pro) : ?>
                                             <option value="<?= $pro['id']; ?>"><?= $pro['nm_product']; ?></option>
                                         <?php endforeach; ?>
