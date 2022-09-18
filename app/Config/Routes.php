@@ -45,7 +45,6 @@ $routes->get('/user', 'User::index');
 /* Routes ADMIN */
 $routes->get('/admin', 'Admin::index', ['filter' => 'role:admin']);
 $routes->get('/admin/index', 'Admin::index', ['filter' => 'role:admin']);
-$routes->get('/admin/product', 'Admin::managePro', ['filter' => 'role:admin']);
 
 // Manage Categories
 $routes->get('/admin/categories', 'Categories::index', ['filter' => 'role:admin']);
@@ -54,6 +53,18 @@ $routes->post('/admin/categories/save', 'Categories::save', ['filter' => 'role:a
 $routes->delete('/admin/categories/(:num)', 'Categories::delete/$1', ['filter' => 'role:admin']);
 $routes->get('/admin/categories/edit/(:segment)', 'Categories::edit/$1', ['filter' => 'role:admin']);
 $routes->post('/admin/categories/update/(:num)', 'Categories::update/$1', ['filter' => 'role:admin']);
+$routes->get('/admin/categories/detail/(:num)', 'Categories::detail/$1', ['filter' => 'role:admin']);
+$routes->get('/admin/categories/add-capo', 'Categories::addCapo', ['filter' => 'role:admin']);
+$routes->post('/admin/categories/capo/save', 'Categories::saveCapo', ['filter' => 'role:admin']);
+$routes->get('/admin/categories/product/(:num)', 'Categories::product/$1');
+
+// Manage Product
+$routes->get('/admin/product', 'Product::index', ['filter' => 'role:admin']);
+$routes->get('/admin/product/add', 'Product::create', ['filter' => 'role:admin']);
+$routes->post('/admin/product/save', 'Product::save', ['filter' => 'role:admin']);
+$routes->delete('/admin/product/(:num)', 'Product::delete/$1', ['filter' => 'role:admin']);
+$routes->get('/admin/product/edit/(:segment)', 'Product::edit/$1', ['filter' => 'role:admin']);
+$routes->post('/admin/product/update/(:num)', 'Product::update/$1', ['filter' => 'role:admin']);
 
 $routes->get('/admin/manage-users', 'Admin::manageUsers', ['filter' => 'role:admin']);
 $routes->get('/admin/(:num)', 'Admin::detail/$1', ['filter' => 'role:admin']);

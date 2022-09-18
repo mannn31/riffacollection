@@ -45,6 +45,7 @@
                                         <td><?= $cat['nm_cat']; ?></td>
                                         <td><img src="/img/category/<?= $cat['pic_cat']; ?>" style="height: 100px;"></td>
                                         <td>
+                                            <a href="<?= base_url('admin/categories/detail/' . $cat['id']); ?>" class="btn btn-info">See Product</a>
                                             <a href="/admin/categories/edit/<?= $cat['id']; ?>" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
 
                                             <form action="/admin/categories/<?= $cat['id']; ?>" method="POST" class="d-inline">

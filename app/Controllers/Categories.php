@@ -3,16 +3,22 @@
 namespace App\Controllers;
 
 use App\Models\CategoriesModel;
+use App\Models\ProductModel;
+use App\Models\CapoModel;
 use Config\Validation;
 use PHPUnit\Util\Xml\Validator;
 
 class Categories extends BaseController
 {
-    protected $CategoriesModel;
+    protected $CategoriesModel, $db, $builder, $ProductModel, $CapoModel;
 
     public function __construct()
     {
         $this->CategoriesModel = new CategoriesModel();
+        $this->db = \Config\Database::connect();
+        $this->builder = $this->db->table('categories');
+        $this->ProductModel = new ProductModel();
+        $this->CapoModel = new CapoModel();
     }
 
     public function index()
@@ -137,5 +143,76 @@ class Categories extends BaseController
         session()->setFlashdata('pesan', 'Categories has been updated.');
 
         return redirect()->to('/admin/categories');
+    }
+
+    public function detail($id = 0)
+    {
+        $data['title'] = 'Detail Categories';
+
+        $this->builder->select('categories.id as catid, nm_cat, product.id as proid, nm_product, desc_product, stock, price, img_product');
+        $this->builder->join('categories_product', 'categories_product.categories_id = categories.id');
+        $this->builder->join('product', 'product.id = categories_product.product_id');
+        $this->builder->where('categories.id', $id);
+        $query = $this->builder->get();
+
+        $data['capo'] = $query->getRow();
+
+        // if (empty($data['capo'])) {
+        //     return redirect()->to('pages/categories');
+        // }
+
+        return view('pages/admin/detail-categories', $data);
+    }
+
+    public function addCapo()
+    {
+        $data = [
+            'title' => 'Edit Product',
+            'validation' => \Config\Services::validation(),
+            'product' => $this->ProductModel->getProduct(),
+            'categories' => $this->CategoriesModel->getCategories()
+        ];
+        $data['title'] = 'Add Categories Of Product';
+
+        $this->builder->select('categories.id as catid, nm_cat, product.id as proid, nm_product, desc_product, stock, price, img_product');
+        $this->builder->join('categories_product', 'categories_product.categories_id = categories.id');
+        $this->builder->join('product', 'product.id = categories_product.product_id');
+        // $this->builder->where('categories.id', $id);
+        $query = $this->builder->get();
+
+        $data['capo'] = $query->getRow();
+
+        return view('pages/admin/add-capo', $data);
+    }
+
+    public function saveCapo()
+    {
+        $this->CapoModel->save([
+            'categories_id' => $this->request->getVar('cat_id'),
+            'product_id' => $this->request->getVar('pro_id'),
+        ]);
+
+        session()->setFlashdata('pesan', 'Product has been added.');
+
+        return redirect()->to('/admin/categories');
+    }
+
+    public function product($id = 0)
+    {
+        $data['title'] = 'Catagories Of Product';
+
+        $this->builder->select('categories.id as catid, nm_cat, product.id as proid, nm_product, desc_product, stock, price, img_product');
+        $this->builder->join('categories_product', 'categories_product.categories_id = categories.id');
+        $this->builder->join('product', 'product.id = categories_product.product_id');
+        $this->builder->where('categories.id', $id);
+        $query = $this->builder->get();
+
+        $data['capo'] = $query->getRow();
+
+        // if (empty($data['capo'])) {
+        //     return redirect()->to('pages/categories');
+        // }
+
+        return view('pages/admin/capo', $data);
     }
 }

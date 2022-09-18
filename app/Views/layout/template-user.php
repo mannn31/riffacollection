@@ -94,6 +94,27 @@
     <!-- Custom scripts for all pages-->
     <script src="<?= base_url(); ?>/style/js/sb-admin-2.min.js"></script>
 
+    <script src="<?= base_url(); ?>/style/tinymce/js/tinymce/tinymce.min.js"></script>
+    <script type="text/javascript">
+        tinymce.init({
+
+            selector: "textarea",
+
+            plugins: [
+
+                "advlist autolink lists link image charmap print preview anchor",
+
+                "searchreplace visualblocks code fullscreen",
+
+                "insertdatetime media table contextmenu paste"
+
+            ],
+
+            toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+
+        });
+    </script>
+
     <script>
         function previewImg() {
             const pict = document.querySelector('#pic_cat');
@@ -119,6 +140,21 @@
 
             const filePic = new FileReader();
             filePic.readAsDataURL(user_img.files[0]);
+
+            filePic.onload = function(e) {
+                imgPreview.src = e.target.result;
+            }
+        }
+
+        function previewImgp() {
+            const pict = document.querySelector('#img_product');
+            const pictLabel = document.querySelector('.custom-file-label');
+            const imgPreview = document.querySelector('.img-preview');
+
+            pictLabel.textContent = img_product.files[0].name;
+
+            const filePic = new FileReader();
+            filePic.readAsDataURL(img_product.files[0]);
 
             filePic.onload = function(e) {
                 imgPreview.src = e.target.result;

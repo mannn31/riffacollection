@@ -19,12 +19,6 @@ class Admin extends BaseController
         return view('pages/admin/index', $data);
     }
 
-    public function managePro()
-    {
-        $data['title'] = 'Manage Product';
-        return view('pages/admin/product', $data);
-    }
-
     public function manageUsers()
     {
         $data['title'] = 'Manage Users';

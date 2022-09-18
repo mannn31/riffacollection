@@ -11,16 +11,20 @@
         </div>
     </div>
     <div class="row mt-2">
-        <div class="col-6 col-lg-3">
-            <div class="card text-center">
-                <img src="<?= base_url(); ?>/img/product/wraps.jpg" class="card-header" style="height: 200px;">
-                <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="<?= base_url('/product-detail'); ?>" class="btn btn-info">See Product</a>
+        <?php foreach ($product as $pro) : ?>
+            <div class="col-6 col-lg-2">
+                <div class="card">
+                    <img src="<?= base_url(); ?>/img/product/<?= $pro['img_product']; ?>" class="card-header" style="height: 200px;">
+                    <div class="card-body">
+                        <h5 class="card-title"><?= $pro['nm_product']; ?></h5>
+                        <p class="card-text">Rp. <?= $pro['price']; ?>,-</p>
+                        <div class="text-center">
+                            <a href="<?= base_url('/product-detail'); ?>" class="btn btn-info">See Product</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        <?php endforeach; ?>
     </div>
     <!-- End Product -->
 

@@ -8,12 +8,12 @@
     <h1 class="mb-4 text-gray-800 text-center"><strong>Welcome To Riffa Collection</strong></h1>
 
     <!-- Categories -->
-    
+
     <div class="row row-cols-2 row-cols-md-4">
         <?php foreach ($categories as $cat) : ?>
             <div class="col mb-4">
                 <div class="card">
-                    <a href="#" class="btn rounded">
+                    <a href="<?= base_url('admin/categories/product/' . $cat['id']); ?>" class="btn rounded">
                         <img src="<?= base_url(); ?>/img/category/<?= $cat['pic_cat']; ?>" class="card-img-top" style="height: 200px;">
                         <div class="card-body">
                             <h5 class="card-title"><?= $cat['nm_cat']; ?></h5>
@@ -33,16 +33,20 @@
         </div>
     </div>
     <div class="row mt-2">
-        <div class="col-6 col-lg-3">
-            <div class="card text-center">
-                <img src="<?= base_url(); ?>/img/product/wraps.jpg" class="card-header" style="height: 200px;">
-                <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="<?= base_url('/product-detail'); ?>" class="btn btn-info">See Product</a>
+        <?php foreach ($product as $pro) : ?>
+            <div class="col-6 col-lg-2">
+                <div class="card">
+                    <img src="<?= base_url(); ?>/img/product/<?= $pro['img_product']; ?>" class="card-header" style="height: 200px;">
+                    <div class="card-body">
+                        <h5 class="card-title"><?= $pro['nm_product']; ?></h5>
+                        <p class="card-text">Rp. <?= $pro['price']; ?>,-</p>
+                        <div class="text-center">
+                            <a href="<?= base_url('/product-detail'); ?>" class="btn btn-info">See Product</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        <?php endforeach; ?>
     </div>
     <div class="row mt-2 justify-content-center">
         <div class="text-center">
