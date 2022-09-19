@@ -13,8 +13,10 @@
             <div class="card shadow mb-4">
                 <div class="card-body">
                     <?php if (session()->getFlashdata('pesan')) : ?>
-                        <div class="alert alert-succes" role="alert">
-                            <?= session()->getFlashdata('pesan'); ?>
+                        <div class="card mb-4 py-3 border-left-info">
+                            <div class="card-body">
+                                <strong><i class="fa-solid fa-circle-check"></i> <?= session()->getFlashdata('pesan'); ?></strong>
+                            </div>
                         </div>
                     <?php endif; ?>
                     <div class="table-responsive">
@@ -45,7 +47,7 @@
                                         <tr>
                                             <td><?= $i++; ?></td>
                                             <td>O-<?= $o->orderid; ?></td>
-                                            <td><?= $o->fullname; ?></td>
+                                            <td><?= $o->nm_orders; ?></td>
                                             <td><?= $o->adress; ?></td>
                                             <td><?= $o->no_hp; ?></td>
                                             <td><?= $o->nm_product; ?></td>

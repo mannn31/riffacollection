@@ -41,6 +41,7 @@ $routes->get('/profile/edit/(:segment)', 'User::edit/$1');
 $routes->post('/profile/edit/update/(:num)', 'User::update/$1');
 $routes->get('/product', 'Home::product');
 $routes->get('/product/detail/(:num)', 'Home::detail/$1');
+$routes->post('/product/detail/save', 'Home::save');
 $routes->get('/user', 'User::index');
 
 /* Routes ADMIN */

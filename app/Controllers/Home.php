@@ -4,10 +4,11 @@ namespace App\Controllers;
 
 use App\Models\CategoriesModel;
 use App\Models\ProductModel;
+use App\Models\OrdersModel;
 
 class Home extends BaseController
 {
-    protected $CategoriesModel, $ProductModel, $db, $builder;
+    protected $CategoriesModel, $ProductModel, $db, $builder, $OrdersModel;
 
     public function __construct()
     {
@@ -15,6 +16,7 @@ class Home extends BaseController
         $this->builder = $this->db->table('product');
         $this->CategoriesModel = new CategoriesModel();
         $this->ProductModel = new ProductModel();
+        $this->OrdersModel = new OrdersModel();
     }
 
     public function index()
@@ -44,8 +46,8 @@ class Home extends BaseController
         $data['title'] = 'Detail Product';
 
         $this->builder->select('product.id as proid, nm_product, desc_product, stock, price, img_product');
-        // $this->builder->join('categories_product', 'categories_product.product_id = product.id');
-        // $this->builder->join('categories', 'categories.id = categories_product.categories_id');
+        // $this->builder->join('auth_logins', 'auth_logins.user_id = users.id');
+        // $this->builder->join('users', 'users.id = users.id');
         $this->builder->where('product.id', $id);
         $query = $this->builder->get();
 
@@ -58,5 +60,31 @@ class Home extends BaseController
         // ];
 
         return view('pages/detail-product', $data);
+    }
+
+    public function save()
+    {
+
+        //pick image
+        $fileImg = $this->request->getFile('img_proof');
+        //move image
+        $fileImg->move('img/payment');
+        //changed name image
+        $picCat = $fileImg->getName();
+
+        $this->OrdersModel->save([
+            'nm_orders' => $this->request->getVar('fullname'),
+            'adress' => $this->request->getVar('adress'),
+            'no_hp' => $this->request->getVar('no_handphone'),
+            'product_id' => $this->request->getVar('product_id'),
+            'qty' => $this->request->getVar('qty'),
+            'total_price' => $this->request->getVar('total_price'),
+            'payment' => $this->request->getVar('payment'),
+            'img_proof' => $picCat
+        ]);
+
+        session()->setFlashdata('pesan', 'Product has been order.');
+
+        return redirect()->to('/product');
     }
 }

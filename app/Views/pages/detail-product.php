@@ -36,11 +36,11 @@
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <form>
+            <form action="/product/detail/save" method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="fullname">Fullname</label>
-                        <input type="text" class="form-control" id="fullname" name="fullname" value="">
+                        <input type="text" class="form-control" id="fullname" name="fullname">
                     </div>
                     <div class="form-group">
                         <label for="adress">Adress</label>
@@ -52,7 +52,7 @@
                     </div>
                     <div class="form-group">
                         <label for="nm_product">Name Product</label>
-                        <input type="text" class="form-control" id="product_id" name="product_id" disabled hidden value="<?= $pro->proid; ?>">
+                        <input type="text" class="form-control" id="product_id" name="product_id" value="<?= $pro->proid; ?>" hidden>
                         <input type="text" class="form-control" id="nm_product" name="nm_product" disabled value="<?= $pro->nm_product; ?>">
                     </div>
                     <div class="form-group">
@@ -61,7 +61,7 @@
                     </div>
                     <div class="form-group">
                         <label for="total_price">Total Price</label>
-                        <input type="text" class="form-control" id="total_price" name="total_price" disabled value="<?= $pro->price; ?>">
+                        <input type="disabled" class="form-control" id="total_price" name="total_price" value="Rp. <?= $pro->price; ?>,-">
                     </div>
                     <div class="form-group">
                         <label for="payment">Payment</label>
@@ -91,7 +91,7 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-info" href="<?= base_url('logout'); ?>">Logout</a>
+                    <button class="btn btn-info" type="submit">Order</button>
                 </div>
             </form>
         </div>

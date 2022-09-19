@@ -13,8 +13,10 @@
             <div class="card shadow mb-4">
                 <div class="card-body">
                     <?php if (session()->getFlashdata('pesan')) : ?>
-                        <div class="alert alert-succes" role="alert">
-                            <?= session()->getFlashdata('pesan'); ?>
+                        <div class="card mb-4 py-3 border-left-info">
+                            <div class="card-body">
+                                <strong><i class="fa-solid fa-circle-check"></i> <?= session()->getFlashdata('pesan'); ?></strong>
+                            </div>
                         </div>
                     <?php endif; ?>
                     <div class="row mb-3">

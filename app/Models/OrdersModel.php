@@ -8,5 +8,5 @@ class OrdersModel extends Model
 {
     protected $table = 'orders';
     protected $useTimestamps = true;
-    protected $allowedFields = ['user_id', 'adress', 'product_id', 'qty', 'payment', 'img_proof'];
+    protected $allowedFields = ['nm_orders', 'adress', 'no_hp', 'product_id', 'qty', 'total_price', 'payment', 'img_proof'];
 }

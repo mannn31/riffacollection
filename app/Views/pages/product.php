@@ -10,6 +10,13 @@
             <p class="text-muted">Please choose the product according to what you need.</p>
         </div>
     </div>
+    <?php if (session()->getFlashdata('pesan')) : ?>
+        <div class="card mb-4 py-3 border-left-info">
+            <div class="card-body">
+                <strong><i class="fa-solid fa-circle-check"></i> <?= session()->getFlashdata('pesan'); ?></strong>
+            </div>
+        </div>
+    <?php endif; ?>
     <div class="row mt-2">
         <?php foreach ($product as $pro) : ?>
             <div class="col-6 col-lg-2">

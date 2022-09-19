@@ -28,8 +28,14 @@ class Order extends BaseController
             'orders' => $this->OrdersModel->findAll()
         ];
 
-        $this->builder->select('orders.id as orderid, adress, no_hp, qty, total_price, payment, img_proof, product.id as proid, nm_product, users.id as userid, fullname');
-        $this->builder->join('users', 'users.id = orders.user_id');
+        // $this->builder->select('orders.id as orderid, adress, no_hp, qty, total_price, payment, img_proof, product.id as proid, nm_product, users.id as userid, fullname');
+        // $this->builder->join('users', 'users.id = orders.user_id');
+        // $this->builder->join('product', 'product.id = orders.product_id');
+        // $query = $this->builder->get();
+
+        // $data['ordr'] = $query->getResult();
+
+        $this->builder->select('orders.id as orderid, nm_orders, adress, no_hp, qty, total_price, payment, img_proof, product.id as proid, nm_product');
         $this->builder->join('product', 'product.id = orders.product_id');
         $query = $this->builder->get();
 
