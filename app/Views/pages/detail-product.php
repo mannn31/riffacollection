@@ -17,6 +17,7 @@
                 <div class="card-body">
                     <h5 class="card-title"><strong><?= $pro->nm_product; ?></strong></h5>
                     <p class="card-text">Rp. <?= $pro->price; ?>,-</p>
+                    <p class="card-text"><small><strong><i>Stock <?= $pro->stock; ?></i></strong></small></p>
                     <a href="#" class="btn btn-info btn-block" data-toggle="modal" data-target="#buyModal"><i class="fa-solid fa-dollar-sign"></i> Buy Product</a>
                     <p class="card-text"><?= $pro->desc_product; ?></p>
                 </div>

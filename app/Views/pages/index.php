@@ -40,6 +40,7 @@
                     <div class="card-body">
                         <h5 class="card-title"><?= $pro['nm_product']; ?></h5>
                         <p class="card-text">Rp. <?= $pro['price']; ?>,-</p>
+                        <p class="card-text text-center"><small><strong><i>Stock <?= $pro['stock']; ?></i></strong></small></p>
                         <div class="text-center">
                             <a href="<?= base_url('/product/detail/' . $pro['id']); ?>" class="btn btn-info">See Product</a>
                         </div>

@@ -1,0 +1,10 @@
+CRITICAL - 2022-10-22 01:30:26 --> Cannot use object of type stdClass as array
+in APPPATH\Views\pages\detail-product.php on line 20.
+ 1 SYSTEMPATH\View\View.php(213): include()
+ 2 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1142): CodeIgniter\View\View->render('pages/detail-product', [], true)
+ 4 APPPATH\Controllers\Home.php(62): view('pages/detail-product', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(904): App\Controllers\Home->detail('2')
+ 6 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

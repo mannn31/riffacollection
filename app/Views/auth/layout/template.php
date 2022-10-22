@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Hijab Store - Login</title>
+    <title>Riffa Collection - Login</title>
 
     <!-- Custom fonts for this template-->
     <link href="<?= base_url(); ?>/style/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
